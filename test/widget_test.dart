@@ -1,30 +1,29 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
+import 'package:login_tdd/app.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:login_tdd/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  // Test for checking credentials and navigating to Home page on successful login attempt.
+  testWidgets('Login test', (WidgetTester tester) async {
+    // Creating the LoginPage widget and adding it to the widget tree.
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Finding the username and password fields in the widget tree.
+    Finder usernameField = find.byKey(const Key('username'));
+    Finder passwordField = find.byKey(const Key('password'));
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Entering the correct credentials in the username and password fields.
+    await tester.enterText(usernameField, 'ahmadipour');
+    await tester.enterText(passwordField, '123456');
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Finding the login button in the widget tree and tapping it.
+    Finder loginButton = find.byKey(const Key('login'));
+    await tester.tap(loginButton);
+
+    //waits for the widget tree to finish building and rendering before continuing with the test
+    await tester.pumpAndSettle();
+
+    // Verify that the new page is displayed.
+    expect(find.byKey(const Key('textHomePage')), findsOneWidget);
   });
 }
