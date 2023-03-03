@@ -19,6 +19,6 @@ Test-driven development (TDD) is a software development process that relies on t
 5. Refactor code: Refactor the code to acceptable standards.
 
 ## Types of TDD:
-1. Unit Testing: This type of testing focuses on individual units or components of a system, such as classes or methods.
-2. Integration Testing: This type of testing focuses on how different components interact with each other.
-3. Acceptance Testing: This type of testing focuses on verifying that a system meets its requirements and is ready for production use.
+1. Widget testing: This type of testing in flutter , is a process of testing the UI of a widget to ensure that it is functioning as expected. It involves testing the widget’s visual elements, such as its size, color, and layout, as well as its interactive elements, such as buttons and text fields. Widget testing can be done manually or with automated tools.
+2. Unit Testing: This type of testing focuses on individual units or components of a system, such as classes or methods.
+3. Integration Testing: This type of testing focuses on how different components interact with each other.
